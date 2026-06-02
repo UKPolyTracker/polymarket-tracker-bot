@@ -123,8 +123,8 @@ async function pollOnce(
       } = trade;
 
       const tradeSide = String(side).toUpperCase();
-      const priceInCents = price != null ? Math.round(price * 100) : null;
-      const formattedPrice = priceInCents != null ? `${priceInCents}¢` : "N/A";
+      const decimalOdds = price != null && price > 0 ? (1 / price).toFixed(2) : null;
+      const formattedPrice = decimalOdds != null ? `${decimalOdds}` : "N/A";
       const discordTimestamp = timestamp != null ? `<t:${timestamp}:f>` : "N/A";
 
       let detectedOrderType = "UNKNOWN";
